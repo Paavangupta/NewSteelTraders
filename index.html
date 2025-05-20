@@ -25,7 +25,18 @@
     /* Hero */
     .hero { position: relative; text-align: center; padding: 120px 0 60px; background: url('images/hero.jpg') center/cover no-repeat; }
     .hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.3); }
-    .hero-content { position: relative; z-index: 1; color: #fff; max-width: 600px; margin: 0 auto; animation: fadeIn 1s ease-out; }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      color: #fff;
+      max-width: 600px;
+      margin: 0 auto;
+      /* Background image behind text */
+      background: url('images/hero-text-bg.jpg') center/cover no-repeat;
+      padding: 60px 40px;
+      border-radius: 16px;
+      animation: fadeIn 1s ease-out;
+    }
     .hero-content h1 { font-size: 3.5rem; margin-bottom: 16px; font-weight: 600; }
     .hero-content .cta-button { display: inline-block; margin-top: 24px; padding: 12px 32px; background: #0071e3; color: #fff; border-radius: 8px; font-size: 1.125rem; text-decoration: none; transition: background 0.3s, transform 0.3s; }
     .hero-content .cta-button:hover { background: #005bb5; transform: translateY(-2px); }
@@ -44,9 +55,10 @@
       border-bottom: 1px solid #e5e5f0;
     }
     /* Even sections: full-width gray background with rounded corners */
-    section:nth-of-type(even) {
+    /* Gray tinted background for Products and Team sections */
+    section#products, section#team {
       background: #f9f9f5;
-      border-radius: 16px;
+      border-radius: 32px;
       margin: 40px 0;
     }
     h2 { font-size: 2.75rem; font-weight: 600; margin-bottom: 16px; position: relative; }
