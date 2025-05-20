@@ -23,7 +23,19 @@
     nav a:hover::after { width: 100%; }
 
     /* Hero */
-    .hero { position: relative; text-align: center; padding: 120px 0 60px; background: url('images/hero.jpg') center/cover no-repeat; }
+    .hero {
+      position: relative;
+      text-align: center;
+      padding: 120px 0 60px;
+      /* Full-section background image */
+      background: url('images/hero-text-bg.jpg') center/cover no-repeat;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+    }
     .hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.3); }
     .hero-content {
       position: relative;
@@ -31,8 +43,7 @@
       color: #fff;
       max-width: 600px;
       margin: 0 auto;
-      /* Background image behind text */
-      background: url('images/hero-text-bg.jpg') center/cover no-repeat;
+      /* Removed boxed background so full-hero background shows */
       padding: 60px 40px;
       border-radius: 16px;
       animation: fadeIn 1s ease-out;
@@ -69,10 +80,36 @@
     .container { width: 90%; max-width: 1000px; margin: 0 auto; }
 
     /* About section */
-    .about-content { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; }
-    .about-image { flex: 1; overflow: hidden; border-radius: 12px; }
-    .about-image img { width: 110%; clip-path: polygon(10% 0,100% 0,100% 100%,0% 100%); transition: transform 0.5s; }
-    .about-image img:hover { transform: scale(1.05); }
+    .about-content {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      margin-top: 32px;
+      /* prevent wrapping so image stays right */
+      flex-wrap: nowrap;
+    }
+    .about-text, .about-image {
+      flex: 1 1 45%;
+      overflow: hidden;
+      border-radius: 12px;
+      /* maintain aspect ratio */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .about-image img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      /* remove clip if causing distortion */
+      clip-path: polygon(10% 0,100% 0,100% 100%,0% 100%);
+    }
+    .about-image {
+      overflow: hidden;
+      border-radius: 12px;
+    }
 
     /* Products grid */
     .grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 32px; margin-top: 32px; }
