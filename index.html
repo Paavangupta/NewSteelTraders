@@ -23,113 +23,55 @@
     nav a:hover::after { width: 100%; }
 
     /* Hero */
-    .hero {
-      position: relative;
-      text-align: center;
-      padding: 120px 0 60px;
-      /* Full-section background image */
-      background: url('images/hero-text-bg.jpg') center/cover no-repeat;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.3);
-    }
+    .hero { position: relative; text-align: center; padding: 120px 0 60px; background: url('images/hero-text-bg.jpg') center/cover no-repeat; }
     .hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.3); }
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      color: #fff;
-      max-width: 600px;
-      margin: 0 auto;
-      /* Removed boxed background so full-hero background shows */
-      padding: 60px 40px;
-      border-radius: 16px;
-      animation: fadeIn 1s ease-out;
-    }
+    .hero-content { position: relative; z-index: 1; color: #fff; max-width: 600px; margin: 0 auto; padding: 60px 40px; border-radius: 16px; background: rgba(0,0,0,0.4); }
     .hero-content h1 { font-size: 3.5rem; margin-bottom: 16px; font-weight: 600; }
     .hero-content .cta-button { display: inline-block; margin-top: 24px; padding: 12px 32px; background: #0071e3; color: #fff; border-radius: 8px; font-size: 1.125rem; text-decoration: none; transition: background 0.3s, transform 0.3s; }
     .hero-content .cta-button:hover { background: #005bb5; transform: translateY(-2px); }
 
     @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* Section styling */
-    section {
-      width: 100%;
-      padding: 80px 0;
-      scroll-margin-top: 100px;
-      animation: fadeIn 0.8s ease-out;
-    }
-    /* Odd sections: divider */
-    section:nth-of-type(odd):not(.hero) {
-      border-bottom: 1px solid #e5e5f0;
-    }
-    /* Even sections: full-width gray background with rounded corners */
-    /* Gray tinted background for Products and Team sections */
-    section#products, section#team {
-      background: #f9f9f5;
-      border-radius: 32px;
-      margin: 40px 0;
-    }
-    h2 { font-size: 2.75rem; font-weight: 600; margin-bottom: 16px; position: relative; }
-    h2::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 60px; height: 4px; background: #0071e3; border-radius: 2px; }
+    /* Sections */
+    section { width: 100%; padding: 80px 0; scroll-margin-top: 100px; }
+    section:nth-of-type(odd):not(.hero) { border-bottom: 1px solid #e5e5f0; }
+    section#products, section#team { background: #f9f9f5; border-radius: 32px; margin: 40px 0; }
+    h2 { font-size: 2.75rem; font-weight: 600; margin: 0 auto 24px; text-align: center; position: relative; }
+    h2::after { content: ''; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); width: 60px; height: 4px; background: #0071e3; border-radius: 2px; }
     p, .tile p, .profile p { font-size: 1.125rem; color: #2c2c2e; }
 
-    /* Container for content */
+    /* Container */
     .container { width: 90%; max-width: 1000px; margin: 0 auto; }
 
-    /* About section */
-    .about-content {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      gap: 32px;
-      margin-top: 32px;
-      /* prevent wrapping so image stays right */
-      flex-wrap: nowrap;
-    }
-    .about-text, .about-image {
-      flex: 1 1 45%;
-      overflow: hidden;
-      border-radius: 12px;
-      /* maintain aspect ratio */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .about-image img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      /* remove clip if causing distortion */
-      clip-path: polygon(10% 0,100% 0,100% 100%,0% 100%);
-    }
-    .about-image {
-      overflow: hidden;
-      border-radius: 12px;
-    }
+    /* About Us */
+    .about-content { display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 32px; margin-top: 32px; flex-wrap: nowrap; }
+    .about-text { flex: 1 1 45%; }
+    .about-image { flex: 1 1 45%; overflow: hidden; border-radius: 16px; }
+    .about-image img { width: 100%; height: auto; object-fit: cover; clip-path: polygon(10% 0,100% 0,100% 100%,0% 100%); }
 
-    /* Products grid */
+    /* Products */
     .grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 32px; margin-top: 32px; }
     .tile { background: #fff; padding: 32px 24px; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
     .tile:hover { transform: translateY(-6px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
     .tile img { width: 100%; border-radius: 8px; margin-bottom: 16px; object-fit: cover; }
-    .tile h3 { font-size: 1.5rem; margin-bottom: 12px; color: #1d1d1f; }
-    .tile p { line-height: 1.4; color: #4a4a4f; }
+    /* Automatic descriptions */
+    .tile h3 + p { opacity: 0.9; }
 
-    /* Team section */
-    .profiles { display: flex; flex-wrap: wrap; gap: 32px; margin-top: 32px; }
+    /* Affiliations */
+    .affiliations { background: #fff; padding: 40px 0; }
+    .affiliations-logos { display: flex; justify-content: space-around; align-items: center; gap: 32px; flex-wrap: wrap; width: 90%; max-width: 1000px; margin: 0 auto; }
+    .affiliations-logos img { max-width: 150px; height: auto; }
+
+    /* Team */
+    .profiles { display: flex; flex-wrap: wrap; gap: 32px; margin: 32px 0; justify-content: space-around; }
     .profile { background: #fff; padding: 24px; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); display: flex; align-items: center; transition: transform 0.3s; }
     .profile:hover { transform: translateY(-4px); }
     .profile img { width: 80px; height: 80px; border-radius: 50%; margin-right: 20px; object-fit: cover; }
     .profile h3 { font-size: 1.25rem; margin-bottom: 4px; }
-    .profile p { color: #4a4a4f; }
 
-    /* Branch section */
-    .branches { display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; margin-top: 32px; }
-    .branch { background: #fff; padding: 24px; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); transition: transform 0.3s; }
+    /* Branches */
+    .branches { display: flex; gap: 32px; justify-content: space-between; margin: 32px 0; flex-wrap: nowrap; }
+    .branch { background: #fff; padding: 24px; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); transition: transform 0.3s; flex: 1 1 45%; }
     .branch:hover { transform: translateY(-4px); }
     .branch h3 { font-size: 1.5rem; margin-bottom: 12px; }
     .branch p { margin: 6px 0; color: #4a4a4f; }
@@ -163,7 +105,7 @@
       <h2>About Us</h2>
       <div class="about-content">
         <div class="about-text">
-          <p>Our mission is to create beautiful, high-quality products that enrich everyday life. We focus on simplicity, attention to detail, and timeless design.</p>
+          <p>For over 35 years, New Steel Traders has been the premier supplier and distributor of industrial steel solutions. We partner closely with clients to deliver customized, large-volume orders tailored to their unique specifications. Our unwavering commitment to quality, reliability, and responsive service ensures your projects move forward without a hitch.</p>
         </div>
         <div class="about-image">
           <img src="images/about.jpg" alt="About Image">
@@ -176,12 +118,27 @@
     <div class="container">
       <h2>Our Products</h2>
       <div class="grid">
-        <div class="tile"><img src="images/product1.jpg" alt="Product 1"><h3>Product 1</h3><p>Line one description about this product.<br>Line two additional details.</p></div>
-        <div class="tile"><img src="images/product2.jpg" alt="Product 2"><h3>Product 2</h3><p>Line one description about this product.<br>Line two additional details.</p></div>
-        <div class="tile"><img src="images/product3.jpg" alt="Product 3"><h3>Product 3</h3><p>Line one description about this product.<br>Line two additional details.</p></div>
-        <div class="tile"><img src="images/product4.jpg" alt="Product 4"><h3>Product 4</h3><p>Line one description about this product.<br>Line two additional details.</p></div>
-        <div class="tile"><img src="images/product5.jpg" alt="Product 5"><h3>Product 5</h3><p>Line one description about this product.<br>Line two additional details.</p></div>
-        <div class="tile"><img src="images/product6.jpg" alt="Product 6"><h3>Product 6</h3><p>Line one description about this product.<br>Line two additional details.</p></div>
+        <div class="tile"><img src="images/product1.png" alt="HR Coils"><h3>HR Coils</h3><p>Hot rolled steel coils ideal for structural applications.</p></div>
+        <div class="tile"><img src="images/product9.png" alt="CR Coils"><h3>CR Coils</h3><p>Cold rolled steel coils providing a smooth finish and precise dimensions.</p></div>
+        <div class="tile"><img src="images/product8.png" alt="HR Sheets"><h3>HR Sheets</h3><p>Hot rolled steel sheets suitable for bending and welding.</p></div>
+        <div class="tile"><img src="images/product2.png" alt="MS Angle"><h3>MS Angle</h3><p>Mild steel angles for framing and support.</p></div>
+        <div class="tile"><img src="images/product4.png" alt="MS Channel"><h3>MS Channel</h3><p>Mild steel channels for construction and engineering uses.</p></div>
+        <div class="tile"><img src="images/product5.png" alt="ISMB Beams"><h3>ISMB Beams</h3><p>Indian standard medium beams for heavy load-bearing.</p></div>
+        <div class="tile"><img src="images/product6.jpg" alt="Plates"><h3>Plates</h3><p>Steel plates used in fabrication and machinery.</p></div>
+        <div class="tile"><img src="images/product7.png" alt="NPB"><h3>NPB</h3><p>Narrow plate bars for precision engineering.</p></div>
+        <div class="tile"><img src="images/product3.png" alt="Joist"><h3>Joist</h3><p>Steel joists offering strong support for floors and roofs.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="affiliations">
+    <div class="container">
+      <h2>Our Affiliations</h2>
+      <div class="affiliations-logos">
+        <img src="images/aff1.png" alt="Affiliation 1">
+        <img src="images/aff2.png" alt="Affiliation 2">
+        <img src="images/aff3.png" alt="Affiliation 3">
+        <img src="images/aff4.png" alt="Affiliation 4">
       </div>
     </div>
   </section>
@@ -190,8 +147,8 @@
     <div class="container">
       <h2>Who We Are</h2>
       <div class="profiles">
-        <div class="profile"><img src="images/person1.jpg" alt="Person 1"><div><h3>Person One</h3><p>Co-founder & Designer<br>Passionate about user experience.</p></div></div>
-        <div class="profile"><img src="images/person2.jpg" alt="Person 2"><div><h3>Person Two</h3><p>Co-founder & Engineer<br>Building reliable, scalable systems.</p></div></div>
+        <div class="profile"><img src="images/person1.jpg" alt="Person 1"><div><h3>Ashish Gupta</h3><p>Partner</p></div></div>
+        <div class="profile"><img src="images/person2.jpg" alt="Person 2"><div><h3>Dinesh Gupta</h3><p>Partner</p></div></div>
       </div>
     </div>
   </section>
@@ -202,15 +159,15 @@
       <div class="branches">
         <div class="branch">
           <h3>Delhi Branch</h3>
-          <p>Phone: +91 11 1234 5678</p>
-          <p>Email: delhi@example.com</p>
-          <p>Address: 123 Connaught Place, New Delhi, India</p>
+          <p>Phone: +91 9810588852</p>
+          <p>Email: ashishnst@gmail.com</p>
+          <p>Address: Y-189 Loha Mandi, Naraina, New Delhi, India</p>
         </div>
         <div class="branch">
           <h3>Ghaziabad Branch</h3>
-          <p>Phone: +91 120 8765 4321</p>
-          <p>Email: ghaziabad@example.com</p>
-          <p>Address: Sector 5, Vaishali, Ghaziabad, Uttar Pradesh, India</p>
+          <p>Phone: +91 9810317560</p>
+          <p>Email: newsteeltraders@gmail.com</p>
+          <p>Address: B-2/2 B.S. Road, Industrial Area, Ghaziabad, Uttar Pradesh, India</p>
         </div>
       </div>
     </div>
